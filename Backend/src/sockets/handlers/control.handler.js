@@ -12,8 +12,6 @@ import { autoSellPlayer } from "../services/sell.service.js";
 
     if(!auction) return;
     
-    console.log("Pause - userId:", userId, "createdBy:", auction.createdBy);
-    
     if(auction.createdBy.toString() !== userId?.toString()){
       return socket.emit("controlError", {
         message: "Unauthorized"
@@ -42,8 +40,6 @@ import { autoSellPlayer } from "../services/sell.service.js";
     const auction = await AuctionRoom.findById(auctionId);
 
   if (!auction) return;
-
-  console.log("Resume - userId:", userId, "createdBy:", auction.createdBy);
   
   if (auction.createdBy.toString() !== userId?.toString()) {
     return socket.emit("controlError", { message: "Unauthorized" });
@@ -148,8 +144,6 @@ auction.priorityEndTime = null;
 
   } catch (err) {
 
-    console.log(err);
-
     socket.emit("controlError", {
       message: "Server Error"
     });
@@ -166,8 +160,6 @@ auction.priorityEndTime = null;
   const auction = await AuctionRoom.findById(auctionId);
 
   if (!auction) return;
-
-  console.log("ForceSell - userId:", userId, "createdBy:", auction.createdBy);
   
   if (auction.createdBy.toString() !== userId?.toString()) {
     return socket.emit("controlError", { message: "Unauthorized" });

@@ -63,7 +63,6 @@ export const startAuction = async ({ io, socket, data }) => {
     });
 
   } catch (err) {
-    console.log(err);
     socket.emit("controlError", {
       message: "Failed to start auction"
     });

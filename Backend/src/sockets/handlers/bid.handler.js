@@ -8,8 +8,6 @@ export const placeBid = async ({ io, socket, data }) => {
   try {
     const { auctionId, bidAmount, teamId } = data;
 
-    console.log("Bid received", bidAmount, "from team", teamId);
-
     const auction = await AuctionRoom.findById(auctionId);
     if (!auction) {
       return socket.emit("bidError", {
@@ -22,7 +20,6 @@ export const placeBid = async ({ io, socket, data }) => {
       });
     }
     if (!auction.timerEndTime || new Date() > auction.timerEndTime) {
-      console.log("sss");
       return socket.emit("bidError", {
         message: "Bidding time ended",
       });
@@ -92,10 +89,8 @@ export const placeBid = async ({ io, socket, data }) => {
     //addedddddddd
     const playerCategory = player.category;
 
-    // auction limit for this category
     const maxAllowed = auction.categoryLimits[playerCategory];
 
-    // how many this team already has
     const currentCount = team.categoryCounts[playerCategory] || 0;
 
     if (currentCount >= maxAllowed) {
@@ -145,7 +140,6 @@ export const placeBid = async ({ io, socket, data }) => {
       timestamp: new Date(),
       timerEndTime: updatedAuction.timerEndTime,
     });
-    console.log("Bid Broadcasted");
     await BidHistory.create({
       auctionId,
       playerId: auction.currentPlayer,
@@ -154,7 +148,6 @@ export const placeBid = async ({ io, socket, data }) => {
       timestamp: new Date(),
     });
   } catch (err) {
-    console.log(err);
 
     socket.emit("bidError", {
       message: "Server error",
