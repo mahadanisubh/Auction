@@ -1,0 +1,52 @@
+.timer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 10px 16px;
+  padding-left: 15px;
+  border-radius: 12px;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.timer.warning {
+  background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+  animation: pulse 0.5s ease-in-out infinite;
+  box-shadow: 0 8px 24px rgba(243, 156, 18, 0.45);
+}
+
+.timer.expired {
+  background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 8px 24px rgba(243, 156, 18, 0.45);
+  }
+  50% { 
+    transform: scale(1.08);
+    box-shadow: 0 12px 32px rgba(243, 156, 18, 0.6);
+  }
+}
+
+.timer-display {
+  margin-bottom: 6px;
+  font-size: 48px;
+  font-weight: 900;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.timer-label {
+  margin: 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.95;
+  font-weight: 700;
+}

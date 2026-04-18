@@ -1,0 +1,92 @@
+.sold-banner {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  animation: slideDown 0.5s ease-out;
+}
+
+/* entry animation */
+@keyframes slideDown {
+  from {
+    transform: translateX(-50%) translateY(-120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* main card */
+.sold-card {
+  background: linear-gradient(135deg,#0f172a,#1e293b);
+  color: white;
+  padding: 35px 55px;
+  border-radius: 14px;
+  text-align: center;
+  position: relative;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.5),
+    0 0 25px rgba(0,255,170,0.15);
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* SOLD badge */
+.sold-badge {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  background: linear-gradient(45deg,#ff4747,#ff0000);
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+/* title */
+.sold-title {
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  color: #22c55e;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* player name */
+.player-name {
+  font-size: 34px;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+/* team text */
+.team-name {
+  font-size: 18px;
+  margin: 6px 0 12px 0;
+}
+
+.team-name span {
+  color: #60a5fa;
+  font-weight: 700;
+}
+
+/* price */
+.sold-price {
+  font-size: 32px;
+  font-weight: 900;
+  color: #facc15;
+  margin-top: 8px;
+  text-shadow: 0 0 10px rgba(255,200,0,0.5);
+}
+
+.sold-price span {
+  font-size: 16px;
+  margin-left: 4px;
+  color: #fcd34d;
+}

@@ -1,0 +1,16 @@
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.team-list-empty,
+.team-list-loading {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-size: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}

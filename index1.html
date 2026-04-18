@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket Test</title>
+  </head>
+  <body>
+    <h2>Socket Test</h2>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+    <script>
+      const socket = io("http://localhost:3000");
+
+      socket.on("connect", () => {
+        console.log("Connected to server:", socket.id);
+        socket.emit("joinAuction", "69b035f26eadc824a425fdcb");
+        socket.emit("placeBid", {
+          auctionId: "69b035f26eadc824a425fdcb",
+          bidAmount: 14,
+          teamId: "69a6c808da3acffac31639a5",
+        });
+      });
+      socket.on("timerUpdate", (data) => {
+        console.log("Time left:", data.remainingTime);
+      });
+      socket.on("bidUpdated", (data) => {
+        console.log("Bid Updated:", data);
+      });
+      socket.on("playerSold", (data) => {
+        console.log("Player sold:", data);
+      });
+      socket.on("bidError", (err) => {
+        console.log("Bid Error:", err.message);
+      });
+      socket.on("disconnect", () => {
+        console.log("Disconnected from server");
+      });
+      socket.on("auctionPaused");
+      socket.on("auctionResumed");
+      socket.on("playerSkipped");
+      socket.on("playerSold");
+      socket.on("nextPlayer");
+    </script>
+  </body>
+</html>
