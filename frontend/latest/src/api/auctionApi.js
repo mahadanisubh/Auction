@@ -9,7 +9,6 @@ const api = axios.create({
   }
 });
 
-// Add token to every request if it exists
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
@@ -32,15 +31,13 @@ api.interceptors.response.use(
   }
 );
 
-// Auth APIs
 export const registerUser = (userData) => api.post("/registeruser", userData);
 export const loginUser = (credentials) => api.post("/loginuser", credentials);
 
-// Team APIs
 export const createTeam = (teamData) => api.post("/createteam", teamData);
 export const getTeamsByAuction = (auctionId) => api.get(`/auction/${auctionId}/teams`);
 
-// Player APIs
+
 export const createPlayer = (playerData) => {
   const formData = new FormData();
   formData.append("playerName", playerData.playerName);
@@ -55,12 +52,11 @@ export const createPlayer = (playerData) => {
   });
 };
 
-// Auction APIs
 export const createAuction = (auctionData) => api.post("/createauction", auctionData);
 export const startAuction = (auctionId) => api.post(`/auction/${auctionId}/start`);
 export const sellPlayer = (auctionId) => api.post(`/auction/${auctionId}/sell`);
 
-// GET APIs for fetching data
+
 export const getAllAuctions = () => api.get("/auctions");
 export const getAuctionById = (auctionId) => api.get(`/auction/${auctionId}`);
 export const getPlayerById = (playerId) => api.get(`/player/${playerId}`);
@@ -70,7 +66,7 @@ export const getAllTeams = () => api.get("/teams");
 export const getMyTeams = (auctionId) => api.get(`/my-teams${auctionId ? `?auctionId=${auctionId}` : ""}`);
 export const getAllUsers = (role) => api.get(`/users?role=${role}`);
 
-// Update auction players and teams
+
 export const updateAuctionPlayers = (auctionId, playerIds) => 
   api.put(`/auction/${auctionId}/players`, { playerIds });
 export const updateAuctionTeams = (auctionId, teamIds) => 
