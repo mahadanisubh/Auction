@@ -21,7 +21,7 @@ app.set("io", io);
 
 
 app.use(cors({
-  origin: ["http://localhost:5173"],
+  origin: ["http://localhost:5173", "https://auction-f.vercel.app"],
   credentials: true
 }));
 
