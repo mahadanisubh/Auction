@@ -150,7 +150,7 @@ export const placeBid = async ({ io, socket, data }) => {
   } catch (err) {
 
     socket.emit("bidError", {
-      message: "Server error",
+      message: "Server error ",
     });
   }
 };
